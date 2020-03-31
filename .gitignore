@@ -1,0 +1,4 @@
+.idea/*.xml
+!.idea/misc.xml
+!.idea/modules.xml
+out/
