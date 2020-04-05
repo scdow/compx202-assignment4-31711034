@@ -50,16 +50,16 @@ Instructions
 
 4. Add a single anchor to EditableRectangle on the top left corner.
     Your anchor should allow a user to move the whole rectangle 
-	without altering the width and height.
+	without altering the width and height. **Make a Git commit at this point.**
 
 5. Add a second anchor to EditableRectangle on the bottom
     right corner.  Moving this new anchor should resize the
 	rectangle without moving the top left corner.  You should find that
 	moving the top left corner anchor will still move the whole rectangle, 
-	but will leave the bottom right anchor behind.
+	but will leave the bottom right anchor behind. **Make a Git commit at this point.**
 
 6.  Modify your EditableRectangle so that the top left anchor just 
-    moves its corner - also resizing the rectangle.
+    moves its corner - also resizing the rectangle. **Make a Git commit at this point.**
 	
 7. Experiment to see what happens when the corners of the rectangle
     cross over (e.g. drag the bottom right anchor up and to the left,
@@ -77,7 +77,7 @@ Instructions
 
 10. In the Main.java `start()` method, add a listener to the EditableRectangle
     instance that writes a message to the console using
-    _System.out.println_ whenever the rectangle changes.
+    _System.out.println_ whenever the rectangle changes. **Make a Git commit at this point.**
 
 11. In the Main.java `start()` method, add a
     [javafx.scene.text.Text](https://openjfx.io/javadoc/11/javafx.graphics/javafx/scene/text/Text.html)
@@ -91,12 +91,12 @@ Instructions
     of printing a message to the console, it sets the text of the Text
     node from step 10 to the area of the rectangle (i.e. width \*
     height). Check that the area is updated as the rectangle is
-    resized.
+    resized. **Make a Git commit at this point.**
 
 14. Add a second Text node, and use a second listener to update it
     with the perimeter of the rectangle. Indicate which number is the
     area and which is the perimeter, either by changing the text or by
-    adding more Text nodes.
+    adding more Text nodes. **Make a Git commit at this point.**
 
 15. Test your program to make sure that the area and perimeter are
     displayed correctly.  Explain how you tested your program in the 
@@ -133,8 +133,9 @@ Instructions
 Submitting
 ----------
 
-Push your changes to your private GitHub repository. Ensure that you can see
-your changes on GitHub.
+Commit and push your changes to your private GitHub repository. Ensure that you can see
+your changes on GitHub. Export your project to ZIP (File > Export to Zip File...) and submit it to Blackboard.
+
 
 Grading
 -------
