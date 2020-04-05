@@ -2,7 +2,7 @@
 Assignment 4 - The Observer Pattern
 ========================================
 
-#### Due on **Friday 17th April at 8pm**
+#### Due on **Monday 20th April at 5pm**
 
 -------------------------
 
