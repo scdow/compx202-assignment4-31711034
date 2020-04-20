@@ -1,3 +1,4 @@
+import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
@@ -18,6 +19,9 @@ class EditableRectangle extends Group {
         rectangle.setStrokeWidth(10);
         rectangle.setStrokeType(StrokeType.CENTERED);
         getChildren().add(rectangle);
+
+//        ObservableList<Double> points = rectangle.getPoints();
+//        points.setAll(x1, y1, x2, y2, x3, y3);
 
         anchor_topleft = new Anchor(rectangle.getX(),rectangle.getY());
         anchor_topleft.addListener(obs ->{ //obs: myObserverable
