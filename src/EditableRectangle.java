@@ -63,6 +63,14 @@ class EditableRectangle extends Group implements MyObservable{
 //        }
     }
 
+    double getWidth(){
+        return rectangle.getWidth();
+    }
+
+    double getHeight(){
+        return rectangle.getHeight();
+    }
+
     @Override
     public void addListener(MyListener listener) {
         listeners.add(listener);

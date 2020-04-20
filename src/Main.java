@@ -6,8 +6,10 @@ import javafx.scene.Scene;
 import javafx.scene.shape.FillRule;
 import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.shape.StrokeType;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.*;
 
 import java.awt.*;
 
@@ -25,14 +27,24 @@ public class Main extends Application {
         root.getChildren().add(triangle);
         root.getChildren().add(triangle2);
 
-        EditableRectangle rectangle = new EditableRectangle(400,200,130,100);
+        EditableRectangle rectangle = new EditableRectangle(500,200,130,100);
         root.getChildren().add(rectangle);
 
+        String content = String.valueOf(rectangle.getWidth()*rectangle.getHeight());
+        Text text = new Text(700,100, "Area: "+content);
+        text.setFill(Color.BLACK);
+        text.setFont(Font.font(20));
+        root.getChildren().add(text);
+
         rectangle.addListener(c -> {
-            System.out.println("Transformed Rectangle");
+//            System.out.println("Rectangle transforming");
+            String area = String.valueOf(rectangle.getWidth()*rectangle.getHeight());
+            text.setText("Area: "+area);
         });
 
-        Scene scene = new Scene(root, 600, 500, Color.BISQUE);
+
+
+        Scene scene = new Scene(root, 1000, 700, Color.BISQUE);
         stage.setTitle("Assignment 4");
         stage.setScene(scene);
 
