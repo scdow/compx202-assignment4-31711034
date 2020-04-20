@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.collections.ListChangeListener;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.Scene;
@@ -26,6 +27,10 @@ public class Main extends Application {
 
         EditableRectangle rectangle = new EditableRectangle(400,200,130,100);
         root.getChildren().add(rectangle);
+
+        rectangle.addListener(c -> {
+            System.out.println("Transformed Rectangle");
+        });
 
         Scene scene = new Scene(root, 600, 500, Color.BISQUE);
         stage.setTitle("Assignment 4");

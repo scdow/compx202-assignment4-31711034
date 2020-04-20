@@ -4,7 +4,12 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
 
-class EditableRectangle extends Group {
+import java.util.ArrayList;
+import java.util.List;
+
+class EditableRectangle extends Group implements MyObservable{
+
+    private List<MyListener> listeners = new ArrayList<>();
 
     private Rectangle rectangle;
 //    private Anchor[] anchors;
@@ -28,6 +33,8 @@ class EditableRectangle extends Group {
             //move the corner
             rectangle.setX(anchor_topleft.getCenterX());
             rectangle.setY(anchor_topleft.getCenterY());
+//            System.out.println(obs);
+            notifyListeners();
         });
         getChildren().add(anchor_topleft);
 
@@ -36,6 +43,7 @@ class EditableRectangle extends Group {
             Anchor an = (Anchor) obs;
             rectangle.setWidth(anchor_bottomright.getCenterX()-rectangle.getX());
             rectangle.setHeight(anchor_bottomright.getCenterY()-rectangle.getY());
+            notifyListeners();
         });
         getChildren().add(anchor_bottomright);
 
@@ -53,7 +61,21 @@ class EditableRectangle extends Group {
 //            });
 //            getChildren().add(anchors[i]);
 //        }
-
     }
 
+    @Override
+    public void addListener(MyListener listener) {
+        listeners.add(listener);
+    }
+
+    @Override
+    public void removeListener(MyListener listener) {
+        listeners.remove(listener);
+    }
+
+    private void notifyListeners() {
+        for (MyListener listener : listeners) {
+            listener.update(this);
+        }
+    }
 }
