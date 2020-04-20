@@ -9,6 +9,7 @@ class EditableRectangle extends Group {
     private Rectangle rectangle;
 //    private Anchor[] anchors;
     private Anchor anchor_topleft;
+    private Anchor anchor_bottomright;
 
     public EditableRectangle(double x,double y,double width,double height){
         rectangle = new Rectangle(x, y, width,height);
@@ -25,6 +26,14 @@ class EditableRectangle extends Group {
             rectangle.setY(anchor_topleft.getCenterY());
         });
         getChildren().add(anchor_topleft);
+
+        anchor_bottomright = new Anchor(rectangle.getX()+rectangle.getWidth(),rectangle.getY()+rectangle.getHeight());
+        anchor_bottomright.addListener(obs ->{ //obs: myObserverable
+            Anchor an = (Anchor) obs;
+            rectangle.setWidth(anchor_bottomright.getCenterX()-rectangle.getX());
+            rectangle.setHeight(anchor_bottomright.getCenterY()-rectangle.getY());
+        });
+        getChildren().add(anchor_bottomright);
 
 //        anchors = new Anchor[3];
 //        for (int i = 0; i < 3; i++) {
