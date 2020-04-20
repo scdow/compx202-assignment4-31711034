@@ -36,10 +36,18 @@ public class Main extends Application {
         text.setFont(Font.font(20));
         root.getChildren().add(text);
 
+        String content_perimeter = String.valueOf(2*(rectangle.getHeight()+rectangle.getWidth()));
+        Text text2 = new Text(400,100, "Perimeter: "+content_perimeter);
+        text2.setFont(Font.font(20));
+        root.getChildren().add(text2);
+
         rectangle.addListener(c -> {
 //            System.out.println("Rectangle transforming");
             String area = String.valueOf(rectangle.getWidth()*rectangle.getHeight());
             text.setText("Area: "+area);
+
+            String perimeter = String.valueOf(2*(rectangle.getHeight()+rectangle.getWidth()));
+            text2.setText("Perimeter: "+perimeter);
         });
 
 
