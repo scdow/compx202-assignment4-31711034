@@ -2,7 +2,7 @@
   <configuration default="false" name="Main" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="Main" />
     <module name="assignment4" />
-    <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/JavaFX/javafx-sdk-11.0.2/lib --add-modules javafx.base,javafx.controls" />
+    <option name="VM_PARAMETERS" value="--module-path &quot;D:/About Java/About JDK/JavaFX/javafx-sdk-11.0.2/lib&quot; --add-modules javafx.controls,javafx.fxml" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>
