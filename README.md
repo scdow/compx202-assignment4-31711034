@@ -117,7 +117,9 @@ Instructions
 ````
 > **Question 15**
 
-> Write your answer here
+> 1. At the beginning, calculate the original area and perimeter of rectangle manually;
+2. Drag the corner, roughly check the when rectangle be bigger, make sure the area and perimeter also be bigger;vice versa.
+3. Calculate the specific area and perimeter after rectangle changed.
 
 
 ````
@@ -125,7 +127,21 @@ Instructions
 ````
 > **Question 16**
 
-> Write your answer here
+> When compiler run the 'rectangle.addListener()' in 'start()', it should observer the change of EditableRectangle all the time.
+Users always first do the click event, then drag and move the anchors, the listener of anchors aware it, then change the anchors properties,
+then the notifyListeners of EditableRectangle aware it and transfer the change of rectangle to the 'rectangle.addListener()', 
+so the area and perimeter of rectangle are recalculated and show in the Text nodes in the scene.
+
+````
+````
+> **Analysis 17**
+
+> Achieved part: Have 4 anchors in 4 corners of rectangle, when dragging one anchor, the rectangle size can be changed and another two cornors can move following the rectangle.
+
+Not achieved part: If one corner cross over, the rectangle can't be displayed.
+
+Further implement way for Step 8 and unrealized part of Step 17: Make the anchors be 4 arbitrary corners with Arrary 'Anchor[] anchors;',
+for example: when anchors[0] cross over the anchors[3], the rectangle width or height will <0, then I make them to be Absolute value, and swap anchors[0] to be anchors[3].
 
 
 ````
