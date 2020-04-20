@@ -22,6 +22,10 @@ class EditableRectangle extends Group {
         anchor_topleft = new Anchor(rectangle.getX(),rectangle.getY());
         anchor_topleft.addListener(obs ->{ //obs: myObserverable
             Anchor an = (Anchor) obs;
+            //to just move top left corner and resize
+            rectangle.setWidth(rectangle.getWidth()+(rectangle.getX()-anchor_topleft.getCenterX()));
+            rectangle.setHeight(rectangle.getHeight()+(rectangle.getY()-anchor_topleft.getCenterY()));
+            //move the corner
             rectangle.setX(anchor_topleft.getCenterX());
             rectangle.setY(anchor_topleft.getCenterY());
         });
