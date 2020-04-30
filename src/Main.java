@@ -22,7 +22,7 @@ public class Main extends Application {
 
     public void start(final Stage stage) {
         Group root = new Group();
-        EditableTriangle triangle = new EditableTriangle(100.0, 100.0, 150.0, 50.0, 250.0, 150.0);
+        EditableTriangle triangle = new EditableTriangle(100.0, 100, 150.0, 50.0, 250.0, 150.0);
         EditableTriangle triangle2 = new EditableTriangle(200,400,150,200,300,300);
         root.getChildren().add(triangle);
         root.getChildren().add(triangle2);

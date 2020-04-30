@@ -29,7 +29,68 @@ class EditableRectangle extends Group implements MyObservable{
         rectangle.setStrokeType(StrokeType.CENTERED);
         getChildren().add(rectangle);
 
-        anchor_topleft = new Anchor(rectangle.getX(),rectangle.getY());
+        //arbitrary anchors
+        double[] points = new double[4];
+        points[0] = x;
+        points[1]=x+width;
+        points[2] = y;
+        points[3] = y+height;
+
+        anchors = new Anchor[4];
+        anchors[0] = new Anchor(points[0],points[2]);//top left
+        anchors[1] = new Anchor(points[1],points[2]);//top right
+        anchors[2] = new Anchor(points[1],points[3]);//bottom right
+        anchors[3] = new Anchor(points[0],points[3]);//bottom left
+
+        for(int i=0;i<4;i++){
+            int ifinal = i;
+            //when anchors changing, update corresponding points
+            anchors[ifinal].addListener(observable -> {
+                if(ifinal==0||ifinal==3){
+                    points[0]=anchors[ifinal].getCenterX();
+                }
+                if(ifinal==1||ifinal==2){
+                    points[1]=anchors[ifinal].getCenterX();
+                }
+                if(ifinal==0||ifinal==1){
+                    points[2]=anchors[ifinal].getCenterY();
+                }
+                if(ifinal==2||ifinal==3){
+                    points[3]=anchors[ifinal].getCenterY();
+                }
+
+                //set rectangle
+                rectangle.setX(points[0]);
+                rectangle.setY(points[2]);
+                rectangle.setWidth(Math.abs(points[1]-points[0]));
+                rectangle.setHeight(Math.abs(points[3]-points[2]));
+                if(points[0]>points[1]){
+                    rectangle.setX(points[1]);
+//                    rectangle.setWidth(points[0]-points[1]);
+                }
+                if(points[2]>points[3]){
+                    rectangle.setY(points[3]);
+//                    rectangle.setHeight(points[2]-points[3]);
+                }
+
+                //set anchors
+                anchors[0].setCenterX(points[0]);
+                anchors[0].setCenterY(points[2]);
+                anchors[1].setCenterX(points[1]);
+                anchors[1].setCenterY(points[2]);
+                anchors[2].setCenterX(points[1]);
+                anchors[2].setCenterY(points[3]);
+                anchors[3].setCenterX(points[0]);
+                anchors[3].setCenterY(points[3]);
+
+                notifyListeners();
+            });
+
+            getChildren().add(anchors[i]);
+        }
+
+        //specific anchors
+        /*anchor_topleft = new Anchor(rectangle.getX(),rectangle.getY());
         anchor_topleft.addListener(obs ->{ //obs: myObserverable
             Anchor an = (Anchor) obs;
             //to just move top left corner and resize
@@ -89,28 +150,13 @@ class EditableRectangle extends Group implements MyObservable{
             //update
             notifyListeners();
         });
-        getChildren().add(anchor_bottomleft);
+        getChildren().add(anchor_bottomleft);*/
 
 
 //        anchors = new Anchor[4];
 //        for (int i = 0; i<4; i++){
 //            final int ifinal =i;
 ////            anchors[i] = new Anchor(rectangle.getX(),rectangle.getY());
-//        }
-
-//        anchors = new Anchor[3];
-//        for (int i = 0; i < 3; i++) {
-//            final int ifinal = i;
-//            double x = points.get(2 * i);
-//            double y = points.get(2 * i + 1);
-//            anchors[i] = new Anchor(x, y);
-//            // When the anchor changes, update the Polygon's corresponding point
-//            anchors[i].addListener(obs -> {
-//                Anchor an = (Anchor) obs;
-//                triangle.getPoints().set(2 * ifinal, an.getCenterX());
-//                triangle.getPoints().set(2 * ifinal + 1, an.getCenterY());
-//            });
-//            getChildren().add(anchors[i]);
 //        }
     }
 
